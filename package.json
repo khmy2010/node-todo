@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "commit": "git add . | git commit -m \"commit\" | git push -u origin master"
+    "test": "mocha server/**/*.test.js",
+    "auto-test": "nodemon --exec \"npm test\""
   },
   "keywords": [],
   "author": "KH",
