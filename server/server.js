@@ -26,5 +26,7 @@ app.listen(port, () => {
     let date = new Date();
 
     console.log(`${date.toTimeString()}: Server is listening at port ${port}.`);
-})
+});
+
+module.exports = { app };
 
