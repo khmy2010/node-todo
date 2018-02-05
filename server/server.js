@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+
 const {ObjectID} = require('mongodb');
 
 var { mongoose } = require('./db/mongoose');
@@ -7,6 +8,8 @@ var { User } = require('./models/user');
 var { Todo } = require('./models/todo');
 
 var app = express();
+app.use(express.static('public'));
+
 var port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
@@ -47,6 +50,10 @@ app.get('/todos/:id', (req, res) => {
     else {
         res.status(404).send();
     }
+});
+
+app.get('/mongodb-workaround', (req, res) => {
+    res.status(200).send('alo world');
 });
 
 app.listen(port, () => {

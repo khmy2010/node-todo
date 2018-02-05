@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>MongoDB Workaround using MLabs</title>
+    </head>
+    <body>
+        <div class="container">
+            <h3>Register MLabs without Credit Card</h3>
+            <ul style="list-style-type:decimal">
+                <li>Register an account at mLab.com <a href="https://mlab.com/login">LINK</a></li>
+                <li>Create New Database (Image 1)</li>
+                <li>Choose Provider (Image 2) and continue (button is at bottom right)</li>
+                <li>Choose AWS Region that is closer to you.</li>
+                <li>Enter Database Name</li>
+                <li>Choose your database and you should see result like Image 3</li>
+                <li>Proceed by go to Users tab and Add database user (Image 4)</li>
+                <li>REMEMBER THE CREDENTIAL CREATED AT STEP 7. THIS IS YOUR DBUSER AND DB PASSWORD.</li>
+                <li>Copy and Paste the following code snipper into mongoose.js (assuming you are following course structure)</li>
+                <li>Replace the REMOTE_MONGO variable with your link and credentials (image 5)</li>
+            </ul>
+            
+            <p class="lead">mongoose.js code snippet</p>
+            <pre>
+                var mongoose = require('mongoose');
+
+                //copy the link from "To connect using a driver via the standard MongoDB URI" section
+                //insert db user name and password here
+                const REMOTE_MONGO = '<mark>replace text here with MongoDB URI.</mark>';
+                const LOCAL_MONGO = 'mongodb://localhost:27017/TodoApp';
+                const MONGO_URI = process.env.PORT ? REMOTE_MONGO : LOCAL_MONGO;
+                
+                mongoose.Promise = global.Promise;
+                mongoose.connect(MONGO_URI).then(() => {
+                    console.log('Connected to Mongo instance.')
+                }, (err) => {
+                    console.log('Error connecting to Mongo instance: ', err);
+                });
+                
+                module.export = { mongoose };
+            </pre>   
+            <figure class="text-center">
+                <img class="rounded mx-auto d-block" src="/images/1.png">
+                <figcaption>Image 1: Create new database</figcaption>
+            </figure>
+            <figure class="text-center">
+                <img class="rounded mx-auto d-block" src="/images/2.png">
+                <figcaption>Image 2: Select Provider</figcaption>
+            </figure>
+            <figure class="text-center">
+                <img class="rounded mx-auto d-block" src="/images/3.png">
+                <figcaption>Image 3: Database Screen</figcaption>
+            </figure>
+            <figure class="text-center">
+                <img class="rounded mx-auto d-block" src="/images/4.png">
+                <figcaption>Image 4: Users Tab</figcaption>
+            </figure>
+            <figure class="text-center">
+                <img class="rounded mx-auto d-block" src="/images/5.png">
+                <figcaption>Image 5: To connect using a driver via the standard MongoDB URI</figcaption>
+            </figure>
+        </div>
+    </body>
+</html>

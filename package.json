@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha server/**/*.test.js",
+    "start": "node server/server.js",
     "auto-test": "nodemon --exec \"npm test\""
+  },
+  "engines": {
+    "node": "9.2.0"
   },
   "keywords": [],
   "author": "KH",
