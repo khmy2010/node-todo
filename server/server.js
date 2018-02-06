@@ -52,6 +52,19 @@ app.get('/todos/:id', (req, res) => {
     }
 });
 
+app.delete('/todos/:id', (req, res) => {
+    let id = req.params.id;
+
+    if (ObjectID.isValid(id)) {
+        Todo.findByIdAndRemove(id).then((todo) => {
+            if (todo) { res.send({todo}) }
+            else { res.status(400).send(); }
+        }).catch((e) => res.status(400).send(e));
+
+    }
+    else { res.status(404).send(); }
+});
+
 app.get('/mongodb-workaround', (req, res) => {
     res.status(200).send('alo world');
 });
