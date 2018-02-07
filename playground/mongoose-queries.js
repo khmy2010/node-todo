@@ -19,9 +19,6 @@ console.log(Todo);
 //     console.log('Todo: ', todo);
 // });
 
-// var todo = new Todo({
-//     text: 'Cibai Mongo! Fuck!!!!!'
-// });
 
 // Todo.save().then((product) => {
 //     console.log('Product: ', product);
