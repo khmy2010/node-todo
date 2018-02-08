@@ -59,6 +59,26 @@ UserSchema.methods.generateAuthToken = function() {
     });
 };
 
+UserSchema.statics.findByToken = function(token) {
+    const User = this;
+    var decoded;
+
+    try {
+        decoded = jwt.verify(token, 'SUNWAYPYRAMID');
+    }
+    catch (e) {
+        // return new Promise((resolve, reject) => {
+        //     reject();
+        // });
+        return Promise.reject();
+    }
+    return User.findOne({
+        _id: decoded._id,
+        'tokens.token': token,
+        'tokens.access': 'auth'
+    });
+};
+
 var User = mongoose.model('Users', UserSchema);
 
 module.exports = { User };
