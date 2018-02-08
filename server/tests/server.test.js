@@ -171,7 +171,6 @@ describe('PATCH /todos/:id', () => {
 
 describe('GET /users/me', () => {
     it('should return user if authenticated', (done) => {
-        console.log(users[0]);
         request(app)
             .get('/users/me')
             .set('x-auth', users[0].tokens[0].token)
