@@ -46,7 +46,7 @@ UserSchema.methods.generateAuthToken = function() {
     var token = jwt.sign({
         _id: user._id.toHexString(),
         access
-    }, 'SUNWAYPYRAMID').toString();
+    }, 'SP123').toString();
 
     user.tokens.push({access, token});
 
@@ -65,7 +65,7 @@ UserSchema.statics.findByToken = function(token) {
     var decoded;
 
     try {
-        decoded = jwt.verify(token, 'SUNWAYPYRAMID');
+        decoded = jwt.verify(token, 'SP123');
     }
     catch (e) {
         // return new Promise((resolve, reject) => {
