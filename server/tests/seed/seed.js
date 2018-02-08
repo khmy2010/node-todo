@@ -10,15 +10,15 @@ const userTwoId = new ObjectID();
 const users = [{
     _id: userOneId,
     email: 'kehan@kehan.com',
-    password: 'useronedirection',
+    password: 'userone',
     tokens: [{
         access: 'auth',
         token: jwt.sign({ id: userOneId, access: 'auth' }, 'SUNWAYPYRAMID')
     }]
 }, {
     _id: userTwoId,
-    email: 'miaw@miaw.com',
-    password: 'usertwodownbelow'
+    email: 'cat@cat.com',
+    password: 'usertwo'
 }];
 
 const todos = [{
