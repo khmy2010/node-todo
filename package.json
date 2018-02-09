@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha server/**/*.test.js --timeout 20000",
+    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha server/**/*.test.js --timeout 20000 --exit",
     "start": "node server/server.js",
     "auto-test": "nodemon --exec \"npm test\""
   },
