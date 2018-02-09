@@ -1,9 +1,20 @@
 var env = process.env.NODE_ENV || 'development';
 console.log(`Running on ${env} environment.`);
 
-if (env === 'development') {
-    process.env.MONGODB_URI = 'mongodb://localhost:27017/TodoApp';
+if (env === 'development' || env === 'test') {
+    const config = require('./config.json');
+    const envConfig = config[env];
+
+    Object.keys(envConfig).forEach((key) => {
+        process.env[key] = envConfig[key];
+    }); 
 }
-else if (env === 'test') {
-    process.env.MONGODB_URI = 'mongodb://localhost:27017/TodoAppTest';
-}
+
+//production: heroku config
+
+// if (env === 'development') {
+//     process.env.MONGODB_URI = 'mongodb://localhost:27017/TodoApp';
+// }
+// else if (env === 'test') {
+//     process.env.MONGODB_URI = 'mongodb://localhost:27017/TodoAppTest';
+// }
